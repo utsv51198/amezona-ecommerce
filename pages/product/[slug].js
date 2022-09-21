@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { Store } from '../../utils/store';
 
 const ProductScreen = () => {
+  const router = useRouter();
   const { state, dispatch } = useContext(Store);
   const { query } = useRouter();
   const { slug } = query;
@@ -25,6 +26,7 @@ const ProductScreen = () => {
     }
 
     dispatch({ type: 'CART_ADD_ITEM', payload: { ...product, quantity } });
+    router.push('/cart');
   };
   return (
     <Layout title={product.name}>
